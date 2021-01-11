@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin: 0;
+    font-family: system-ui;
+}
+.display-container {
+    background-color: #EFEFEF;
+    padding-bottom: 1rem;
+    border-top: 5px solid #BFBFBF;
+}
+.container {
+    display: flex;
+}
+.row-container {
+    display: flex;
+}
+.number-container {
+    display: flex;     
+    flex-direction: column;
+    flex: 0.8;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0.2;
+}
+button{
+    width: 10rem;
+    height: 3rem;
+    background-color: #72C3DC;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 5px 5px #2B8EAD;
+    margin: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #EFEFEF;
+}
+
+button:focus{
+    outline: none;
+}
+
+.test {
+    list-style: none;
+    flex: 0 0 30%;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: white;
+}
+.item1 {
+    background-color: #6F98A8;
+}
+.item2 {
+    background-color: #2B8EAD;
+}
+.item3 {
+    background-color: #2F454E;
+}
+.item4 {
+    background-color: #2B8EAD;
+}
+.item5 {
+    background-color: #2F454E;
+}
+.item6 {
+    background-color: #BFBFBF;
+}
+.item7 {
+    background-color: #BFBFBF;
+}
+.item9 {
+    background-color: #2F454E;
+}
+.item8 {
+    background-color: #6F98A8;
+}
+
+.text {
+    justify-content: center;
+    display: flex;
+    padding: 1rem;
+}
+
+@media screen and (max-width:375px) {
+  html {
+    border: 10px solid #000000;
+    border-radius: 1rem;
+  }
+  .header {
+    background-color: #333333;
+    color: #EFEFEF;
+    font-size: 2rem;
+  }
+  .display-container {
+      border-top: none;
+      background-color: #ffffff;
+  }
+  .container {
+    flex-direction: column-reverse;
+  }
+  .row-container {
+    flex-direction: column;
+  }
+  .button-container {
+    flex-direction: row;
+    margin: 1rem;
+  }
+  button {
+    margin: 0;
+    margin-right: 0.5rem;
+    /* color: #EFEFEF; */
+    height: 5rem;
+  }
+  .test {
+    font-size: 2rem;
+    color: white;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    color: #000000;
+  }
+  .item1 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #6F98A8;
+    }
+    .item2 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #2B8EAD;
+    }
+    .item3 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #2F454E;
+    }
+    .item4 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #2B8EAD;
+    }
+    .item5 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #2F454E;
+    }
+    .item6 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #BFBFBF;
+    }
+    .item7 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #BFBFBF;
+    }
+    .item9 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #2F454E;
+    }
+    .item8 {
+        background-color:#EFEFEF;
+        border-left: 10px solid #6F98A8;
+    }
+}
+
+</style>
+</head>
+<body>
+    <div>
+        <div class="text header"> Shuffle and Sort</div>
+        <div class="display-container">
+            <div class="container">
+                <div id="demo" class="number-container"></div>
+                <div class="button-container">
+                    <button onClick="onSuffle()">SHUFFLE</button>
+                    <button onClick="onSort()">SORT</button>
+                </div>
+            </div>
+            <div class="text"><i>Shuffle and sort by Jaya Bhattacharjee</i></div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    var arr = [];
+    for (let i=1; i<10; i++) {
+        arr.push(i);
+    }
+
+    function getArrayData() {
+        document.getElementById("demo").innerHTML = '';
+        console.log(arr)
+        for (let i=0; i<arr.length;) {
+            myFunction(arr[i],arr[i+1],arr[i+2]);
+            i = i+3;
+        }
+    }
+    getArrayData();
+
+    function myFunction(item, item1, item2) {
+            document.getElementById("demo").innerHTML +=  "<div class='row-container'><div class='test item"+item+"' id='"+item+"'>" +item + "</div><div class='test item"+item1+"' id='"+item1+"'>" +item1 + "</div><div class='test item"+item2+"' id='"+item2+"'>" +item2 + "</div></div>"; 
+    }
+
+    function onSuffle() {
+        arr.sort( () => 0.5 - Math.random() );
+        document.getElementById("demo").innerHTML = '';
+        getArrayData();
+    }
+
+    function onSort() {
+        arr.sort();
+        document.getElementById("demo").innerHTML = '';
+        getArrayData();
+    }
+
+
+</script>
+
+</body>
+</html>
